@@ -94,7 +94,20 @@
             <label class="text-sm">Jumlah Tamu</label>
             <input name="jumlah-tamu" id="guests" type="number" min="0" value="1" class="w-full mt-1 p-2 border rounded">
           </div>
+          <div>
+            <label class="text-sm">Pesan</label>
+            <textarea name="pesan" id="message" class="w-full mt-1 p-2 border rounded" placeholder="Pesan untuk pengantin (opsional)"></textarea>
+          </div>
+          <div class="flex gap-3 flex-wrap">
+            <button type="submit" class="px-4 py-2 rounded bg-green-500 text-white">Kirim ke Google Sheets</button>
+            <button id="send-whatsapp" type="button" class="px-4 py-2 rounded border">Kirim via WhatsApp</button>
+            <button type="button" onclick="window.print()" class="px-4 py-2 rounded bg-gray-700 text-white">Cetak Undangan (PDF)</button>
+          </div>
+          <p id="status" class="text-sm text-gray-500"></p>
         </form>
       </div>
     </section>
+
+    <!-- Location -->
+    <section></section>
   </body>
