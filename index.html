@@ -139,7 +139,7 @@
     </footer>
 
     <script>
-      const scriptURL = "https://script.google.com/macros/s/AKfycbwgP3WfsfCU9aE1aGq5UxVUAF5QUDCAhWCk8eC-nTrnXFRtbhVl-gLXRokbJThvSF-S-A/exec";
+      const scriptURL = "https://script.google.com/macros/s/AKfycbwUKBNH6wsbhjOVTp4W_ZILTU9AAPhnFCZGHC2dQyjU8yhEtujiDBw7Bl13kei5u7RgRA/exec";
       const form = document.getElementById('rsvp-form');
       const status = document.getElementById('status');
 
@@ -148,6 +148,32 @@
       form.addEventListener('submit', (e) => {
         e.preventDefault();
         fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-      })
+          .then(response => {
+            if (response.ok) {
+              status.textContent = 'Terima kasih - data RSVP berhasil dikirim ke Google Sheets!';
+              form.reset();
+            } else {
+              status.textContent = 'Gagal mengirim, coba lagi nanti.';
+            }
+          })
+          .catch(() => status.textContent = 'Terjadi kesalahan koneksi.');
+      });
+
+      document.getElementById('send-whatsapp').addEventListener('click', () => {
+        const name = encodeURIComponent(document.getElementById('name').value || 'Nama');
+        const guests = encodeURIComponent(document.getElementById('guests').value || '1');
+        const msg = encodeURIComponent('Halo, saya ${name}. Konfirmasi hadir: ${guests} orang.');
+        const phone = '6281548045037';
+        const url = 'https://wa.me/${phone}?text=${msg}';
+        window.open(url, '_blank');
+      });
+
+      document.getElementById('wa-admin').addEventListener('click', (e) => {
+        e.preventDefault();
+        const phone = '6281548045037';
+        const msg = encodeURIComponent('Halo, saya ingin menanyakan info undangan.');
+        window.open('https://wa.me/${phone}?text=${msg}', '_blank');
+      });
     </script>
   </body>
+</html>
