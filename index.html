@@ -137,4 +137,17 @@
     <footer class="max-w-4xl mx-auto p-6 text-center text-sm text-gray-500">
       ©️ <span id="year"></span> Undangan Pernikahan • Dibuat dengan ❤️
     </footer>
+
+    <script>
+      const scriptURL = "https://script.google.com/macros/s/AKfycbwgP3WfsfCU9aE1aGq5UxVUAF5QUDCAhWCk8eC-nTrnXFRtbhVl-gLXRokbJThvSF-S-A/exec";
+      const form = document.getElementById('rsvp-form');
+      const status = document.getElementById('status');
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+      })
+    </script>
   </body>
