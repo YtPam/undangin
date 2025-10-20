@@ -162,9 +162,9 @@
       document.getElementById('send-whatsapp').addEventListener('click', () => {
         const name = encodeURIComponent(document.getElementById('name').value || 'Nama');
         const guests = encodeURIComponent(document.getElementById('guests').value || '1');
-        const msg = encodeURIComponent('Halo, saya ${name}. Konfirmasi hadir: ${guests} orang.');
+        const msg = encodeURIComponent(`Halo, saya ${name}. Konfirmasi hadir: ${guests} orang.`);
         const phone = '6281548045037';
-        const url = 'https://wa.me/${phone}?text=${msg}';
+        const url = `https://wa.me/${phone}?text=${msg}`;
         window.open(url, '_blank');
       });
 
@@ -172,7 +172,7 @@
         e.preventDefault();
         const phone = '6281548045037';
         const msg = encodeURIComponent('Halo, saya ingin menanyakan info undangan.');
-        window.open('https://wa.me/${phone}?text=${msg}', '_blank');
+        window.open(`https://wa.me/${phone}?text=${msg}`, '_blank');
       });
     </script>
   </body>
